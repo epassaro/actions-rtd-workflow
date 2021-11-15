@@ -28,6 +28,13 @@ on:
     branches:
       - '*'
 
+env:
+  PYTHON: 3.9
+  PKGS_FILE: docs/requirements.txt      # .txt (`pip`) or .yml (`conda`) file
+  BUILD_CMD: cd docs/ && make html
+  DEPLOY_BRANCH: gh-pages               #  target branch to deploy _build/html
+  ROOT_BRANCH: latest                   # `latest` or `stable`
+
 concurrency:
   group: build-docs-${{ github.ref }}
   # cancel-in-progress: true
@@ -35,13 +42,6 @@ concurrency:
 defaults:
   run:
     shell: bash -l {0}
-
-env:
-  PYTHON: 3.9
-  PKGS_FILE: docs/requirements.txt      # .txt (`pip`) or .yml (`conda`) file
-  BUILD_CMD: cd docs/ && make html
-  DEPLOY_BRANCH: gh-pages               #  target branch to deploy _build/html
-  ROOT_BRANCH: latest                   # `latest` or `stable`
 
 jobs:
   build:
