@@ -37,10 +37,11 @@ defaults:
     shell: bash -l {0}
 
 env:
-  PYTHON_VERSION: 3.9
-  PACKAGES_FILE: docs/requirements.txt  # .txt (`pip`) or .yml (`conda`) file
+  PYTHON: 3.9
+  PKGS_FILE: docs/requirements.txt      # .txt (`pip`) or .yml (`conda`) file
+  BUILD_CMD: cd docs/ && make html
   DEPLOY_BRANCH: gh-pages               #  target branch to deploy _build/html
-  ROOT_REDIRECT: latest                 # `latest` or `stable`
+  ROOT_BRANCH: latest                   # `latest` or `stable`
 
 jobs:
   build:
@@ -77,16 +78,16 @@ jobs:
             miniforge-variant: Mambaforge
             miniforge-version: latest
             activate-environment: sphinx
-            python-version: ${{ env.PYTHON_VERSION }}
+            python-version: ${{ env.PYTHON }}
             use-mamba: true
 
       - name: Install packages
         run: |
-          if [[ ${{ env.PACKAGES_FILE }} == *.txt ]]; then
-            pip install -r ${{ env.PACKAGES_FILE }}
+          if [[ ${{ env.PKGS_FILE }} == *.txt ]]; then
+            pip install -r ${{ env.PKGS_FILE }}
 
-          elif [[ ${{ env.PACKAGES_FILE }} == *.yml ]] || [[ ${{ env.PACKAGES_FILE }} == *.yaml ]]; then
-            mamba env update -n sphinx -f ${{ env.PACKAGES_FILE }}
+          elif [[ ${{ env.PKGS_FILE }} == *.yml ]] || [[ ${{ env.PKGS_FILE }} == *.yaml ]]; then
+            mamba env update -n sphinx -f ${{ env.PKGS_FILE }}
 
           else
             echo "Unsupported file extension"
@@ -95,7 +96,7 @@ jobs:
           fi
 
       - name: Build documentation
-        run: cd docs/ && make html
+        run: ${{ env.BUILD_CMD }}
 
       - name: Set destination directory
         run: |          
@@ -145,7 +146,7 @@ jobs:
         run: |
           mkdir redirects && cd redirects
           echo '<head>' >> index.html
-          echo '  <meta http-equiv="Refresh" content="0; url='/${{ github.event.repository.name }}/${{ env.ROOT_REDIRECT }}'"/>' >> index.html
+          echo '  <meta http-equiv="Refresh" content="0; url='/${{ github.event.repository.name }}/${{ env.ROOT_BRANCH }}'"/>' >> index.html
           echo '</head>' >> index.html
 
       - name: Redirect stable
