@@ -65,13 +65,9 @@ jobs:
       - name: Check branches
         run: |
           CHECK_DEPLOY=$(git ls-remote --heads origin refs/heads/${{ env.DEPLOY_BRANCH }})
-          echo "::set-output name=DEPLOY::$(! [[ -z $CHECK_DEPLOY ]] && echo 'true' || echo 'false')"
-          echo $CHECK_DEPLOY
-
           CHECK_STABLE=$(git ls-remote --heads origin refs/heads/stable)
-          echo "::set-output name=STABLE::$(! [[ -z $CHECK_STABLE ]] && echo 'true' || echo 'false')"
-          echo $CHECK_STABLE
-          
+          echo "::set-output name=DEPLOY::$(! [[ -z $CHECK_DEPLOY ]] && echo 'true' || echo 'false')"
+          echo "::set-output name=STABLE::$(! [[ -z $CHECK_STABLE ]] && echo 'true' || echo 'false')"          
           cat $GITHUB_ENV
         id: check-branches
 
