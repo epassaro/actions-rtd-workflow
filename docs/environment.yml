@@ -1,0 +1,9 @@
+name: my-env
+
+channels:
+  - conda-forge
+
+dependencies:
+  - myst-nb
+  - sphinx-autoapi
+  - sphinx_rtd_theme
