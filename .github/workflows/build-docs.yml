@@ -33,7 +33,7 @@ env:
   PKGS_FILE: docs/requirements.txt      # .txt (`pip`) or .yml (`conda`) file
   BUILD_CMD: cd docs/ && make html
   DEPLOY_BRANCH: gh-pages               #  target branch to deploy _build/html
-  ROOT_BRANCH: latest                   # `latest` or `stable`
+  ROOT_REDIRECT: latest                 # `latest` or `stable`
 
 concurrency:
   group: build-docs-${{ github.ref }}
@@ -146,7 +146,7 @@ jobs:
         run: |
           mkdir redirects && cd redirects
           echo '<head>' >> index.html
-          echo '  <meta http-equiv="Refresh" content="0; url='/${{ github.event.repository.name }}/${{ env.ROOT_BRANCH }}'"/>' >> index.html
+          echo '  <meta http-equiv="Refresh" content="0; url='/${{ github.event.repository.name }}/${{ env.ROOT_REDIRECT }}'"/>' >> index.html
           echo '</head>' >> index.html
 
       - name: Redirect stable
