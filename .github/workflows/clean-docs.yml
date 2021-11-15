@@ -29,9 +29,6 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set folder to delete
         run: |
@@ -55,6 +52,7 @@ jobs:
 
       - name: Clean ${{ env.DEST_DIR }}
         run: |
+          git fetch origin ${{ env.DEPLOY_BRANCH }}
           git checkout ${{ env.DEPLOY_BRANCH }}
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
