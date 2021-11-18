@@ -71,8 +71,34 @@
   <section class="tex2jax_ignore mathjax_ignore" id="actions-rtd-workflow">
 <h1>actions-rtd-workflow<a class="headerlink" href="#actions-rtd-workflow" title="Permalink to this headline"></a></h1>
 <p>A RTD-like documentation pipeline for GitHub Actions</p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Support of pip and conda dependency files.</p></li>
+<li><p>Build and deploy branches under /branches/<branch>.</p></li>
+<li><p>Build and deploy tags under /tags/<tag></p></li>
+<li><p>Secure build and preview of pull requests under /pull/<number> via labels.</p></li>
+<li><p>Manual trigger for branches.</p></li>
+<li><p>Select branch to deploy the site (default: gh-pages).</p></li>
+<li><p>Redirect the main domain to /latest or /stable (default: /latest).</p></li>
+<li><p>Redirect the /stable subdomain to the latest SemVer tag, or the stable branch (if exists).</p></li>
+<li><p>Automatic removal of pages from closed/merged pull requests, and deleted branches or tags.</p></li>
+</ol>
+<p>###Not supported
+Multi-language builds.</p>
+</section>
+<section id="live-demo">
+<h2>Live demo<a class="headerlink" href="#live-demo" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>https://epassaro.github.io/actions-rtd-workflow</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/latest</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/stable</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/pull/1</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/tag/v0.1.0</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 
 
