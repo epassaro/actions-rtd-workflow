@@ -12,7 +12,7 @@ A RTD-like documentation pipeline for GitHub Actions
 8. Redirect the /stable subdomain to the latest SemVer tag, or the stable branch (if exists).
 9. Automatic removal of pages from closed/merged pull requests, and deleted branches or tags.
 
-###Not supported
+### Not supported
 Multi-language builds.
 
 ### Live demo
