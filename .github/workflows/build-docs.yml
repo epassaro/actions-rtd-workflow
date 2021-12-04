@@ -195,7 +195,7 @@ jobs:
           edit-mode: replace
           body: |
             Hi, @${{ github.event.sender.login }}! :wave: <br>
-            The build has **succeeded**. [**Click here**](${{ env.URL }}) to see your results.
+            The **`${{ github.workflow }}`** workflow has **succeeded**. [**Click here**](${{ env.URL }}) to see your results.
         env:
           URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pull/${{ github.event.number }}/index.html
         if: success() && github.event_name == 'pull_request_target'
@@ -208,7 +208,7 @@ jobs:
           edit-mode: replace
           body: |
             Sorry, @${{ github.event.sender.login }}! :disappointed: <br>
-            The build has **failed**. [**Click here**](${{ env.URL }}) to see the build log.
+            The **`${{ github.workflow }}`** workflow has **failed**. [**Click here**](${{ env.URL }}) to see the build log.
         env:
           URL: https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/runs/${{ github.run_id }}?check_suite_focus=true
         if: failure() && github.event_name == 'pull_request_target'
