@@ -71,9 +71,37 @@
   <section class="tex2jax_ignore mathjax_ignore" id="actions-rtd-workflow">
 <h1>actions-rtd-workflow<a class="headerlink" href="#actions-rtd-workflow" title="Permalink to this headline"></a></h1>
 <p>A RTD-like documentation pipeline for GitHub Actions</p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h2>
+<ol class="simple">
+<li><p>Support of <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code> dependency files.</p></li>
+<li><p>Build and deploy branches under <code class="docutils literal notranslate"><span class="pre">/branches/&lt;branch&gt;</span></code>.</p></li>
+<li><p>Build and deploy tags under <code class="docutils literal notranslate"><span class="pre">/tags/&lt;tag&gt;</span></code>.</p></li>
+<li><p>Secure build and preview of pull requests under <code class="docutils literal notranslate"><span class="pre">/pull/&lt;number&gt;</span></code> via labels.</p></li>
+<li><p>Manual trigger for branches.</p></li>
+<li><p>Select branch to deploy the site (default: <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>).</p></li>
+<li><p>Redirect the main domain to <code class="docutils literal notranslate"><span class="pre">/latest</span></code> or <code class="docutils literal notranslate"><span class="pre">/stable</span></code> (default: <code class="docutils literal notranslate"><span class="pre">/latest</span></code>).</p></li>
+<li><p>Redirect the <code class="docutils literal notranslate"><span class="pre">/stable</span></code> subdomain to the latest SemVer tag, or the stable branch (if exists).</p></li>
+<li><p>Automatic removal of pages from closed/merged pull requests, and deleted branches or tags.</p></li>
+</ol>
+</section>
+<section id="not-supported">
+<h2>Not supported<a class="headerlink" href="#not-supported" title="Permalink to this headline"></a></h2>
+<p>Multi-language builds.</p>
+</section>
+<section id="live-demo">
+<h2>Live demo<a class="headerlink" href="#live-demo" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>https://epassaro.github.io/actions-rtd-workflow</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/latest</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/stable</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/pull/1</p></li>
+<li><p>https://epassaro.github.io/actions-rtd-workflow/tag/v0.1.0</p></li>
+</ul>
 <p>This page has been created from a pull request.</p>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 
 
